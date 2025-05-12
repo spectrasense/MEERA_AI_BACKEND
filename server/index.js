@@ -77,7 +77,7 @@ mongoose.connect(process.env.MONGODB_URI)
 // CORS configuration
 const allowedOrigins = [
   'http://localhost:5173', // Local frontend
-  'https://your-frontend-domain.com' // Replace with your production frontend domain
+  'https://meeraaitech.com' // Replace with your production frontend domain
 ];
 
 const corsOptions = {
