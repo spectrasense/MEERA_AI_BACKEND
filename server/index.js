@@ -74,8 +74,24 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
+// CORS configuration
+const allowedOrigins = [
+  'http://localhost:5173', // Local frontend
+  'https://your-frontend-domain.com' // Replace with your production frontend domain
+];
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true); // Allow the origin
+    } else {
+      callback(new Error('Not allowed by CORS')); // Reject the origin
+    }
+  }
+};
+
 // Middleware
-app.use(cors());
+app.use(cors(corsOptions)); // Use CORS with specified options
 app.use(express.json());
 
 // Blog API
@@ -176,4 +192,4 @@ app.post('/api/careers/apply', upload.single('resume'), async (req, res) => {
 // Start server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
-}); 
+});
