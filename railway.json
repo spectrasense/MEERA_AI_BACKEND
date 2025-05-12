@@ -1,8 +1,11 @@
 {
     "build": {
-      "builder": "NIXPACKS",
-      "buildCommand": "cd server && npm install",
-      "startCommand": "cd server && npm start"
+      "builder": "node",
+      "root": "./server",
+      "buildCommand": "npm install && npm run build"
+    },
+    "start": {
+      "startCommand": "npm run start"
     }
   }
   
