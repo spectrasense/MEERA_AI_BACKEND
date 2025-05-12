@@ -2,7 +2,7 @@
     "build": {
       "builder": "node",
       "root": "./server",
-      "buildCommand": "npm install && npm run build"
+      "buildCommand": "npm install"
     },
     "start": {
       "startCommand": "npm run start"
